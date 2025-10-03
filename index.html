@@ -162,14 +162,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Tools & Platforms</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>Git & GitHub</li>
-                        <li>Jupyter Notebooks</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Tools & Platforms</h3>
+                    <h3 class="text-xl font-bold text-white mb-4">Quantitative Analysis</h3>
                     <ul class="space-y-2 text-gray-300">
                         <li>Statistical Analysis</li>
                         <li>Probabilistic Modeling</li>
@@ -243,30 +236,131 @@
         <section id="stuff" class="page-section hidden py-20">
             <h2 class="text-3xl font-bold mb-12 text-center text-white">Stuff I Find Interesting</h2>
             <div class="max-w-3xl mx-auto">
-                <h3 class="text-2xl font-bold mb-4 text-white">Example: Exponential Martingale for Bernoulli Variables</h3>
-                <p class="text-gray-300 mb-6">Here's an example from an exercise on martingales, a concept fundamental in probability theory and quantitative finance. It illustrates how a specific transformation of a random walk can create a process with constant expectation over time.</p>
-                <!-- LaTeX content will be rendered here -->
-                <div id="latex-example">
+                <h3 class="text-2xl font-bold mb-4 text-white">Duality of AR and MA Processes</h3>
+                <p class="text-gray-300 mb-6">This illustrates the fundamental duality between Autoregressive (AR) and Moving Average (MA) processes. Under certain conditions, a finite-order process can be represented as an infinite-order process of the other type, a concept central to time series modeling.</p>
+                                <div id="latex-example">
 $$
 \begin{aligned}
-& \text{This example illustrates the construction in Exercise 4.4.4. Let } \xi_k \text{ be i.i.d.} \\
-& \text{Bernoulli trials with } \mathbb{P}(\xi_k=1)=p \text{ and } \mathbb{P}(\xi_k=0)=1-p. \text{ Let } S_n = \sum_{k=1}^n \xi_k. \\
+& \text{Consider a stationary AR(1) process, defined by } X_t = \phi X_{t-1} + \varepsilon_t, \text{ with } |\phi|<1. \\
+& \text{Using the backshift operator } B \text{ (where } BX_t = X_{t-1}\text{), we can write:} \\
+& (1 - \phi B)X_t = \varepsilon_t \\
+& \text{Formally inverting the polynomial in } B \text{ gives the MA(}\infty\text{) representation:} \\
+& X_t = (1 - \phi B)^{-1} \varepsilon_t = \sum_{j=0}^{\infty} (\phi B)^j \varepsilon_t = \sum_{j=0}^{\infty} \phi^j \varepsilon_{t-j} \\
 \\
-& \text{We find the moment generating function of a single trial:} \\
-& \varphi(\theta) = \mathbb{E}[e^{\theta \xi_1}] = e^{\theta \cdot 1} \cdot p + e^{\theta \cdot 0} \cdot (1-p) = pe^\theta + (1-p) \\
+& \text{Conversely, consider an invertible MA(1) process, } X_t = \varepsilon_t + \theta \varepsilon_{t-1}, \text{ with } |\theta|<1. \\
+& \text{In backshift notation, this is } X_t = (1 + \theta B)\varepsilon_t. \\
+& \text{We can express the noise } \varepsilon_t \text{ in terms of past values of } X_t \text{ by inverting:} \\
+& \varepsilon_t = (1 + \theta B)^{-1} X_t = \sum_{j=0}^{\infty} (-\theta B)^j X_t = X_t - \theta X_{t-1} + \theta^2 X_{t-2} - \dots \\
 \\
-& \text{According to the exercise, the process } M_n = \frac{\exp(\theta S_n)}{\varphi(\theta)^n} \text{ is a martingale. Let's write it out:} \\
-& M_n = \frac{e^{\theta S_n}}{(pe^\theta + 1-p)^n} \\
-\\
-& \text{This process is a martingale for any } \theta \in \mathbb{R}. \text{ This family of martingales is} \\
-& \text{fundamental in the study of random walks and is used in sequential analysis and} \\
-& \text{change of measure applications. For example, if we set } e^\theta = \frac{q(1-p)}{p(1-q)} \text{ for some } \\
-& q \in (0,1), \text{ this martingale becomes the likelihood ratio for changing the probability} \\
-& \text{of success from } p \text{ to } q.
+& \text{This duality is crucial, as it allows complex ARMA processes to be approximated} \\
+& \text{by high-order AR or MA models, simplifying estimation and analysis.}
 \end{aligned}
 $$
-                </div>
-            </div>
+                </div>
+            </div>
+
+<div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4 text-white">Undefined Moments of the Cauchy Distribution</h3>
+                <p class="text-gray-300 mb-6">The Cauchy distribution is a famous counterexample in probability and statistics. While its bell-shaped curve resembles the normal distribution, its 'heavy tails' lead to the surprising property that its mean, variance, and all higher moments are undefined. 🤯</p>
+                                <div id="latex-example">
+$$
+\begin{aligned}
+& \text{The standard Cauchy distribution is defined by the probability density function (PDF):} \\
+& f(x) = \frac{1}{\pi(1+x^2)} \quad \text{for } x \in \mathbb{R} \\
+\\
+& \text{Let's attempt to calculate its mean (the first moment), } \mathbb{E}[X]: \\
+& \mathbb{E}[X] = \int_{-\infty}^{\infty} x f(x) dx = \int_{-\infty}^{\infty} \frac{x}{\pi(1+x^2)} dx \\
+\\
+& \text{For this improper integral to be defined, it must converge absolutely. We test this:} \\
+& \int_{-\infty}^{\infty} \left| \frac{x}{\pi(1+x^2)} \right| dx = 2 \int_{0}^{\infty} \frac{x}{\pi(1+x^2)} dx \\
+\\
+& \text{Using the substitution } u = 1+x^2, \text{ so } du = 2x dx: \\
+& = \frac{1}{\pi} \int_{1}^{\infty} \frac{1}{u} du = \frac{1}{\pi} \left[ \ln|u| \right]_{1}^{\infty} \\
+\\
+& \text{As the upper limit goes to infinity, } \ln(u) \to \infty. \text{ The integral diverges.} \\
+& \text{Because the integral for the expected value does not converge absolutely, the mean is} \\
+& \text{formally undefined. Note that its Cauchy Principal Value is 0, but this is not the mean.} \\
+\\
+& \text{Since the first moment (mean) is undefined, all higher-order moments, such as} \\
+& \text{variance, are also undefined for the Cauchy distribution.}
+\end{aligned}
+$$
+                </div>
+            </div>
+
+<div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4 text-white">Braess's Paradox</h3>
+                <p class="text-gray-300 mb-6">Braess's Paradox demonstrates the mind-bending and counter-intuitive idea that adding a new, high-capacity road to a congested traffic network can actually make travel time worse for every single person. It reveals a fundamental conflict between individual rational decision-making and optimal system-wide performance. 🤯</p>
+                                <div id="latex-example">
+$$
+\begin{aligned}
+& \text{Imagine 4000 drivers want to travel from START to END. Let } T \text{ be the number of cars} \\
+& \text{on a road. The initial network has two routes:} \\
+& \text{Route 1 (Top): START} \to A \to \text{END} \\
+& \text{Route 2 (Bottom): START} \to B \to \text{END} \\
+\\
+& \text{The travel time for each segment is:} \\
+& \text{START} \to A: T/100 \text{ mins} \qquad \text{START} \to B: 45 \text{ mins} \\
+& A \to \text{END}: 45 \text{ mins} \qquad \qquad B \to \text{END}: T/100 \text{ mins} \\
+\\
+& \text{At equilibrium, traffic splits evenly: 2000 cars take the top route, 2000 take the bottom.} \\
+& \text{Let's calculate the travel time for any driver on the top route:} \\
+& \text{Time} = (2000/100) + 45 = 20 + 45 = \textbf{65 minutes}. \\
+& \text{(The time is identical for the bottom route). So, every driver's commute is 65 mins.} \\
+\\
+& \textbf{Now, we add a super-fast road from A to B with a travel time of 0.} \\
+&  \\
+& \text{Consider the choice for a single driver. The path START} \to A \to B \to \text{END now exists.} \\
+& \text{A rational driver will always prefer this new path. Why?} \\
+& \text{- At START, the } T/100 \text{ road to A seems better than the fixed 45 min road to B.} \\
+& \text{- Upon reaching A, the driver can take the new 0-minute road to B and then proceed to END.} \\
+& \text{This path seems superior, so everyone tries to take it.} \\
+\\
+& \text{The new equilibrium: All 4000 drivers take the route START} \to A \to B \to \text{END.} \\
+& \text{Let's calculate the new travel time:} \\
+& (\text{Time on START}\to A) + (\text{Time on } A \to B) + (\text{Time on } B \to \text{END}) \\
+& = (4000/100) + 0 + (4000/100) \\
+& = 40 + 0 + 40 = \textbf{80 minutes}. \\
+\\
+& \textbf{The Paradox:} \text{By adding a new, perfect road, we made the commute for} \\
+& \text{every single driver increase from 65 to 80 minutes. The system is now less efficient.}
+\end{aligned}
+$$
+                </div>
+            </div>
+<div class="max-w-3xl mx-auto">
+      <h3 class="text-2xl font-bold mb-4 text-white">Benford's Law (The First-Digit Law)</h3>
+      <p class="text-gray-300 mb-6">Benford's Law is a fascinating and deeply counter-intuitive observation about the frequency of leading digits in many real-life sets of numerical data. Instead of being uniformly distributed (11.1% each), the digit '1' appears as the leading digit about 30% of the time, while '9' appears less than 5% of the time. It's so reliable it's used to detect fraud! 🕵️</p>
+      <div id="latex-example">
+$$
+\begin{aligned}
+& \text{Benford's Law states that the probability } P \text{ of a number having a first digit } d \in \{1, 2, ..., 9\} \\
+& \text{is given by the logarithmic formula:} \\
+& \qquad P(d) = \log_{10}\left(1 + \frac{1}{d}\right) \\
+\\
+& \text{Let's calculate this for the most and least common digits:} \\
+& P(d=1) = \log_{10}(1 + 1/1) = \log_{10}(2) \approx 0.301 \quad (30.1\%) \\
+& P(d=9) = \log_{10}(1 + 1/9) = \log_{10}(10/9) \approx 0.046 \quad (4.6\%) \\
+\\
+& \text{} \\
+\\
+& \textbf{Why does this happen? The core reason is scale invariance.} \\
+& \text{A dataset that spans several orders of magnitude (e.g., from 10s to 1000s) exhibits this} \\
+& \text{property. Think of it logarithmically: moving from 1 to 2 is a 100% increase, while moving} \\
+& \text{from 9 to 10 is only an ~11% increase. A number spends more "time" with a} \\
+& \text{leading digit of 1 on a logarithmic scale.} \\
+\\
+& \text{More formally, the law applies to data whose logarithms are uniformly distributed.} \\
+& \text{The first digit is '1' when a number } x \text{ is between } 1 \cdot 10^k \text{ and } 2 \cdot 10^k. \\
+& \text{The length of this interval on a log scale is } \log_{10}(2) - \log_{10}(1) = 0.301. \\
+\\
+& \textbf{Applications:} \text{This pattern appears in financial data, city populations, physical} \\
+& \text{constants, and river lengths. Accountants use it to spot fabricated numbers in} \\
+& \text{tax returns, as human-invented numbers often fail to follow Benford's Law.}
+\end{aligned}
+$$
+      </div>
+    </div>
         </section>
     </main>
 
