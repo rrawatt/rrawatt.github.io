@@ -236,7 +236,8 @@
             <div class="max-w-3xl mx-auto">
             <h3 class="text-2xl font-bold mb-4 text-white">Duality of AR and MA Processes</h3>
                 <p class="text-gray-300 mb-6">This illustrates the fundamental duality between Autoregressive (AR) and Moving Average (MA) processes. Under certain conditions, a finite-order process can be represented as an infinite-order process of the other type, a concept central to time series modeling.</p>
-                             <div id="latex-example">
+                             <div id="latex-example">\
+                            
 $$
 \begin{aligned}
 & \text{Consider a stationary AR(1) process, defined by } X_t = \phi X_{t-1} + \varepsilon_t, \text{ with } |\phi|<1. |\
@@ -288,7 +289,7 @@ $$
 
 <div class="max-w-3xl mx-auto">
     <h3 class="text-2xl font-bold mb-4 text-white">Braess's Paradox</h3>
-    <p class="text-gray-300 mb-6">Braess's Paradox demonstrates the mind-bending and counter-intuitive idea that adding a new, high-capacity road to a congested traffic network can actually make travel time worse for every single person. It reveals a fundamental conflict between individual rational decision-making and optimal system-wide performance. 🤯</p>
+    <p class="text-gray-300 mb-6">Braess's Paradox demonstrates the mind-bending and counter-intuitive idea that adding a new, high-capacity road to a congested traffic network can actually make travel time worse for every single person. It reveals a fundamental conflict between individual rational decision-making and optimal system-wide performance.</p>
     <div id="latex-example">
 $$
 \begin{aligned}
@@ -302,37 +303,29 @@ $$
 & A \to \text{END}: 45 \text{ mins} \qquad \qquad B \to \text{END}: T/100 \text{ mins} \\
 \\
 & \text{At equilibrium, traffic splits evenly: 2000 cars take the top route, 2000 take the bottom.} \\
-& \text{Let's calculate the travel time for any driver on the top route:} \\
-& \text{Time} = (2000/100) + 45 = 20 + 45 = \textbf{65 minutes}. \\
-& \text{(The time is identical for the bottom route). So, every driver's commute is 65 mins.} \\
+& \text{The travel time for any driver is } (2000/100) + 45 = \textbf{65 minutes}. \\
 \\
 & \textbf{Now, we add a super-fast road from A to B with a travel time of 0.} \\
-&  \\
-& \text{Consider the choice for a single driver. The path START} \to A \to B \to \text{END now exists.} \\
-& \text{A rational driver will always prefer this new path. Why?} \\
-& \text{- At START, the } T/100 \text{ road to A seems better than the fixed 45 min road to B.} \\
-& \text{- Upon reaching A, the driver can take the new 0-minute road to B and then proceed to END.} \\
-& \text{This path seems superior, so everyone tries to take it.} \\
+& \text{A rational driver will always prefer the new path: START} \to A \to B \to \text{END.} \\
+& \text{The new equilibrium: All 4000 drivers take this new route.} \\
 \\
-& \text{The new equilibrium: All 4000 drivers take the route START} \to A \to B \to \text{END.} \\
 & \text{Let's calculate the new travel time:} \\
 & (\text{Time on START}\to A) + (\text{Time on } A \to B) + (\text{Time on } B \to \text{END}) \\
-& = (4000/100) + 0 + (4000/100) \\
-& = 40 + 0 + 40 = \textbf{80 minutes}. \\
+& = (4000/100) + 0 + (4000/100) = 40 + 0 + 40 = \textbf{80 minutes}. \\
 \\
 & \textbf{The Paradox:} \text{By adding a new, perfect road, we made the commute for} \\
-& \text{every single driver increase from 65 to 80 minutes. The system is now less efficient.}
+& \text{every single driver increase from 65 to 80 minutes.}
 \end{aligned}
 $$
     </div>
     </div>
 <div class="max-w-3xl mx-auto">
       <h3 class="text-2xl font-bold mb-4 text-white">Benford's Law (The First-Digit Law)</h3>
-      <p class="text-gray-300 mb-6">Benford's Law is a fascinating and deeply counter-intuitive observation about the frequency of leading digits in many real-life sets of numerical data. Instead of being uniformly distributed (11.1% each), the digit '1' appears as the leading digit about 30% of the time, while '9' appears less than 5% of the time. It's so reliable it's used to detect fraud! 🕵️</p>
+      <p class="text-gray-300 mb-6">Benford's Law is a fascinating and deeply counter-intuitive observation about the frequency of leading digits in many real-life sets of numerical data. Instead of being uniformly distributed (11.1% each), the digit '1' appears as the leading digit about 30% of the time, while '9' appears less than 5% of the time. It's so reliable it's used to detect fraud!</p>
       <div id="latex-example">
 $$
 \begin{aligned}
-& \text{Benford's Law states that the probability } P \text{ of a number having a first digit } d \in \{1, 2, ..., 9\} \\
+& \text{Benford's Law states that the probability } P \text{ of a number having a first digit } d \in \{1, ..., 9\} \\
 & \text{is given by the logarithmic formula:} \\
 & \qquad P(d) = \log_{10}\left(1 + \frac{1}{d}\right) \\
 \\
@@ -340,21 +333,14 @@ $$
 & P(d=1) = \log_{10}(1 + 1/1) = \log_{10}(2) \approx 0.301 \quad (30.1\%) \\
 & P(d=9) = \log_{10}(1 + 1/9) = \log_{10}(10/9) \approx 0.046 \quad (4.6\%) \\
 \\
-& \text{} \\
-\\
 & \textbf{Why does this happen? The core reason is scale invariance.} \\
-& \text{A dataset that spans several orders of magnitude (e.g., from 10s to 1000s) exhibits this} \\
-& \text{property. Think of it logarithmically: moving from 1 to 2 is a 100% increase, while moving} \\
-& \text{from 9 to 10 is only an ~11% increase. A number spends more "time" with a} \\
-& \text{leading digit of 1 on a logarithmic scale.} \\
-\\
-& \text{More formally, the law applies to data whose logarithms are uniformly distributed.} \\
+& \text{The law applies to data whose logarithms are uniformly distributed.} \\
 & \text{The first digit is '1' when a number } x \text{ is between } 1 \cdot 10^k \text{ and } 2 \cdot 10^k. \\
 & \text{The length of this interval on a log scale is } \log_{10}(2) - \log_{10}(1) = 0.301. \\
 \\
 & \textbf{Applications:} \text{This pattern appears in financial data, city populations, physical} \\
-& \text{constants, and river lengths. Accountants use it to spot fabricated numbers in} \\
-& \text{tax returns, as human-invented numbers often fail to follow Benford's Law.}
+& \text{constants, etc. Accountants use it to spot fabricated numbers in} \\
+& \text{tax returns, as human-invented numbers often fail to follow the law.}
 \end{aligned}
 $$
       </div>
