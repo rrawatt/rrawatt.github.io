@@ -1,40 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rrawatt | Quantitative Research Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Puzzles, Math, Quant Research</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX for LaTeX rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmFAILfpeV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+    <style>
+        /* Custom styles for the pure black theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Pure black background */
+            color: #ffffff; /* White text */
+        }
+        /* Style for KaTeX rendered math on dark background */
+        .katex {
+            color: #ffffff;
+        }
+        .katex-display {
+            padding: 1rem;
+            border: 1px solid #374151; /* Gray border for contrast */
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        /* A simple transition for page content */
+        .page-section {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
-  <nav>
-    <div class="nav-content">
-      <div class="nav-logo">Rrawatt</div>
-      <ul>
-        <li><a href="index.html" class="active">About</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </div>
-  </nav>
-  <main>
-    <section class="about-section">
-      <div class="about-photo">
-        <img src="https://via.placeholder.com/160x160.png?text=Photo" alt="Profile Photo" />
-      </div>
-      <div class="about-info">
-        <h1>Rrawatt</h1>
-        <h2>Quantitative Researcher in Finance</h2>
-        <p>
-          Welcome! I’m deeply passionate about quantitative finance, leveraging analytics and technology to unlock market insights and drive innovation. My work spans data-driven modeling, algorithmic trading, and risk management.
-        </p>
-        <div class="about-contact">
-          <a href="mailto:rrawatt@example.com">rrawatt@example.com</a>
-          &nbsp;|&nbsp;
-          <a href="https://linkedin.com/in/rrawatt" target="_blank">LinkedIn</a>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-black bg-opacity-80 backdrop-blur-md z-10 border-b border-gray-700">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Name/Logo -->
+                <div>
+                    <a href="#about" class="text-xl font-bold tracking-wider text-white">JANE DOE</a>
+                </div>
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                    <a href="#education" class="text-gray-300 hover:text-white transition-colors duration-300">Education</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+                    <a href="#puzzles" class="text-gray-300 hover:text-white transition-colors duration-300">Puzzles</a>
+                    <a href="#stuff" class="text-gray-300 hover:text-white transition-colors duration-300">Stuff</a>
+                </nav>
+                 <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
+         <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 border-t border-gray-700">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-white">About</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-white">Projects</a>
+            <a href="#education" class="block py-2 text-gray-300 hover:text-white">Education</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-white">Skills</a>
+            <a href="#puzzles" class="block py-2 text-gray-300 hover:text-white">Puzzles</a>
+            <a href="#stuff" class="block py-2 text-gray-300 hover:text-white">Stuff</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24">
+        
+        <!-- About Section (Landing Page) -->
+        <section id="about" class="page-section min-h-[80vh] flex items-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-1 flex justify-center">
+                    <img src="https://placehold.co/400x400/000000/ffffff?text=JD" alt="Jane Doe" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-gray-700 shadow-md">
+                </div>
+                <div class="md:col-span-2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight text-white">Jane Doe</h1>
+                    <p class="mt-4 text-lg text-gray-300">Quantitative Researcher & Puzzle Enthusiast</p>
+                    <p class="mt-6 text-gray-200 max-w-xl mx-auto md:mx-0">
+                        Welcome to my corner of the web. I'm driven by a passion for uncovering patterns, whether in complex financial markets, the elegant logic of a mathematical proof, or the deceptive simplicity of a well-crafted puzzle. My work in quantitative research is a natural extension of this curiosity, allowing me to apply rigorous analytical methods to solve challenging problems. This site showcases some of the projects and ideas that excite me.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="page-section hidden py-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="border border-gray-700 rounded-lg p-6 hover:shadow-lg hover:border-gray-500 hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-2 text-white">Stochastic Volatility Modeling</h3>
+                    <p class="text-gray-300">Implementation and backtesting of the Heston model to price European options. Utilized Monte Carlo simulations to analyze model performance against historical market data.</p>
+                </div>
+                <!-- Project 2 -->
+                <div class="border border-gray-700 rounded-lg p-6 hover:shadow-lg hover:border-gray-500 hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-2 text-white">Combinatorial Puzzle Solver</h3>
+                    <p class="text-gray-300">Developed a solver for complex logic puzzles (e.g., Sudoku, Nonograms) using constraint propagation and backtracking algorithms in Python, exploring computational complexity.</p>
+                </div>
+                <!-- Project 3 -->
+                <div class="border border-gray-700 rounded-lg p-6 hover:shadow-lg hover:border-gray-500 hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold mb-2 text-white">Time Series Anomaly Detection</h3>
+                    <p class="text-gray-300">A research project on detecting anomalies in high-frequency financial data using statistical methods like ARIMA and machine learning models like Isolation Forest.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="page-section hidden py-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Education</h2>
+            <div class="max-w-2xl mx-auto space-y-8">
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-white">M.S. in Mathematical Finance</h3>
+                    <p class="text-gray-300">University of Chicago, 2022 - 2024</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-white">B.S. in Mathematics & Computer Science</h3>
+                    <p class="text-gray-300">Carnegie Mellon University, 2018 - 2022</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="page-section hidden py-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Technical Skills</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Programming Languages</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Python</li>
+                        <li>R</li>
+                        <li>C++</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Libraries & Frameworks</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Pandas, NumPy, SciPy</li>
+                        <li>Scikit-learn, Keras</li>
+                        <li>TensorFlow, PyTorch</li>
+                        <li>Matplotlib, Seaborn</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Tools & Platforms</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>AWS (S3, EC2)</li>
+                        <li>Jupyter Notebooks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Puzzle Corner Section -->
+        <section id="puzzles" class="page-section hidden py-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Puzzle Corner</h2>
+            
+            <!-- Interactive Puzzle -->
+            <div class="max-w-md mx-auto text-center bg-black border border-gray-700 rounded-lg p-8 mb-16">
+                <h3 class="text-xl font-bold text-white mb-2">Try a Puzzle: The 24 Game</h3>
+                <p class="text-gray-300 mb-6">Use the numbers below with `+`, `-`, `*`, `/`, and parentheses to make 24.</p>
+                <div id="puzzle-numbers" class="text-4xl font-bold tracking-widest mb-6 bg-gray-900 p-4 rounded-md">
+                    <!-- Numbers will be injected here by JS -->
+                </div>
+                <input id="puzzle-input" type="text" placeholder="Your solution: (e.g., 8*6/2)" class="w-full bg-gray-800 border border-gray-600 rounded-md px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                <div class="mt-4 flex justify-center space-x-4">
+                    <button id="check-puzzle-btn" class="bg-white text-black px-6 py-2 rounded-md hover:bg-gray-200 transition-colors">Check</button>
+                    <button id="new-puzzle-btn" class="bg-gray-700 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition-colors">New Puzzle</button>
+                </div>
+                <p id="puzzle-feedback" class="mt-4 h-6 text-sm"></p>
+            </div>
+
+            <!-- Favorite Puzzles Collection -->
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold text-center mb-8 text-white">A Collection of Interesting Puzzles</h3>
+                
+                <!-- Puzzle 1 -->
+                <div class="border border-gray-700 rounded-lg p-6 mb-8">
+                    <h4 class="text-xl font-bold mb-2 text-white">The Bridge Crossing Problem</h4>
+                    <p class="text-gray-300 mb-4">
+                        Four people need to cross a rickety bridge at night. They have only one flashlight, and the bridge can only support two people at a time. The flashlight must be carried back and forth for each crossing. Each person walks at a different speed: one takes 1 minute to cross, another 2 minutes, another 5 minutes, and the last one 10 minutes. When two people cross together, they move at the slower person's pace. What is the minimum time required for all four to cross?
+                    </p>
+                    <button class="toggle-solution-btn bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors">Show Solution</button>
+                    <div class="solution hidden mt-4 p-4 bg-gray-900 rounded-md">
+                        <p><span class="font-bold">Total Time: 17 minutes.</span></p>
+                        <ol class="list-decimal list-inside mt-2 text-gray-400">
+                            <li>1 and 2 cross (2 min)</li>
+                            <li>1 returns with flashlight (1 min)</li>
+                            <li>5 and 10 cross (10 min)</li>
+                            <li>2 returns with flashlight (2 min)</li>
+                            <li>1 and 2 cross (2 min)</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Puzzle 2 -->
+                <div class="border border-gray-700 rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-2 text-white">The Three Hats Problem</h4>
+                    <p class="text-gray-300 mb-4">
+                        Three logicians are captured by a king and are to be tested. The king shows them three white hats and two black hats. He then places a hat on each of their heads. The logicians can see the other two's hats but not their own. The king asks the first logician if he knows the color of his hat. He says "No." The king asks the second, who also says "No." The king asks the third, who says "Yes, my hat is white." How did the third logician know?
+                    </p>
+                    <button class="toggle-solution-btn bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors">Show Solution</button>
+                    <div class="solution hidden mt-4 p-4 bg-gray-900 rounded-md">
+                        <p class="text-gray-400">
+                            Logician 3 reasons as follows: "If my hat were black, Logician 2 would have seen one black hat (mine) and would have reasoned: 'I see a black hat on Logician 3. If my hat were also black, Logician 1 would have seen two black hats and known his was white (since there are only two black hats). Since Logician 1 said 'No', my hat must be white.' But Logician 2 also said 'No'. This means my hat cannot be black, because if it were, Logician 2 would have known his own hat color. Therefore, my hat must be white."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stuff Section -->
+        <section id="stuff" class="page-section hidden py-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-white">Stuff I Find Interesting</h2>
+            <div class="max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4 text-white">Example: Exponential Martingale for Bernoulli Variables</h3>
+                <p class="text-gray-300 mb-6">Here's an example from an exercise on martingales, a concept fundamental in probability theory and quantitative finance. It illustrates how a specific transformation of a random walk can create a process with constant expectation over time.</p>
+                <!-- LaTeX content will be rendered here -->
+                <div id="latex-example">
+$$
+\begin{aligned}
+& \text{This example illustrates the construction in Exercise 4.4.4. Let } \xi_k \text{ be i.i.d.} \\
+& \text{Bernoulli trials with } \mathbb{P}(\xi_k=1)=p \text{ and } \mathbb{P}(\xi_k=0)=1-p. \text{ Let } S_n = \sum_{k=1}^n \xi_k. \\
+\\
+& \text{We find the moment generating function of a single trial:} \\
+& \varphi(\theta) = \mathbb{E}[e^{\theta \xi_1}] = e^{\theta \cdot 1} \cdot p + e^{\theta \cdot 0} \cdot (1-p) = pe^\theta + (1-p) \\
+\\
+& \text{According to the exercise, the process } M_n = \frac{\exp(\theta S_n)}{\varphi(\theta)^n} \text{ is a martingale. Let's write it out:} \\
+& M_n = \frac{e^{\theta S_n}}{(pe^\theta + 1-p)^n} \\
+\\
+& \text{This process is a martingale for any } \theta \in \mathbb{R}. \text{ This family of martingales is} \\
+& \text{fundamental in the study of random walks and is used in sequential analysis and} \\
+& \text{change of measure applications. For example, if we set } e^\theta = \frac{q(1-p)}{p(1-q)} \text{ for some } \\
+& q \in (0,1), \text{ this martingale becomes the likelihood ratio for changing the probability} \\
+& \text{of success from } p \text{ to } q.
+\end{aligned}
+$$
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="border-t border-gray-700 mt-20">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <p class="text-2xl font-bold mb-4 text-white">Get in Touch</p>
+            <p class="text-gray-300 mb-6">Open to new opportunities and collaborations.</p>
+            <a href="mailto:email@example.com" class="inline-block bg-white text-black px-6 py-3 rounded-md hover:bg-gray-200 transition-colors duration-300">
+                email@example.com
+            </a>
+            <div class="flex justify-center space-x-6 mt-8">
+                <a href="https://www.linkedin.com/in/rohit-rawat-5aa3b92a6/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">LinkedIn</a>
+                <a href="https://github.com/rrawatt" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">Github</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Page Navigation Logic ---
+            const pages = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('header a');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+
+            function setActiveLink(pageId) {
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${pageId}`) {
+                        link.classList.add('text-white', 'font-bold');
+                        link.classList.remove('text-gray-300');
+                    } else {
+                        link.classList.remove('text-white', 'font-bold');
+                        link.classList.add('text-gray-300');
+                    }
+                });
+            }
+
+            function showPage(pageId) {
+                let pageFound = false;
+                pages.forEach(page => {
+                    if (page.id === pageId) {
+                        page.classList.remove('hidden');
+                        pageFound = true;
+                    } else {
+                        page.classList.add('hidden');
+                    }
+                });
+                if (!pageFound) {
+                    document.getElementById('about')?.classList.remove('hidden');
+                    setActiveLink('about');
+                } else {
+                    setActiveLink(pageId);
+                }
+            }
+
+            function handleNavigation() {
+                const pageId = window.location.hash.substring(1) || 'about';
+                showPage(pageId);
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        window.location.hash = href.substring(1);
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            window.addEventListener('hashchange', handleNavigation);
+            handleNavigation();
+
+            // --- KaTeX Rendering ---
+            const latexContainer = document.getElementById("latex-example");
+            if (latexContainer) {
+                 renderMathInElement(latexContainer, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false}, {left: '\\[', right: '\\]', display: true}
+                    ],
+                    throwOnError: false
+                });
+            }
+
+            // --- Puzzle Corner: 24 Game Logic ---
+            const puzzleNumbersEl = document.getElementById('puzzle-numbers');
+            const puzzleInput = document.getElementById('puzzle-input');
+            const checkPuzzleBtn = document.getElementById('check-puzzle-btn');
+            const newPuzzleBtn = document.getElementById('new-puzzle-btn');
+            const puzzleFeedback = document.getElementById('puzzle-feedback');
+
+            const puzzles = [
+                { numbers: [8, 6, 2, 7] }, { numbers: [4, 7, 8, 8] }, { numbers: [1, 2, 3, 4] },
+                { numbers: [6, 6, 6, 6] }, { numbers: [3, 3, 7, 7] }
+            ];
+            let currentPuzzle;
+
+            function generateNewPuzzle() {
+                const newPuzzleIndex = Math.floor(Math.random() * puzzles.length);
+                currentPuzzle = puzzles[newPuzzleIndex];
+                puzzleNumbersEl.textContent = currentPuzzle.numbers.join(' ');
+                puzzleInput.value = '';
+                puzzleFeedback.textContent = '';
+            }
+
+            function checkPuzzleSolution() {
+                const solution = puzzleInput.value;
+                puzzleFeedback.textContent = '';
+                puzzleFeedback.classList.remove('text-red-400', 'text-green-400');
+
+                if (!solution) {
+                    puzzleFeedback.textContent = 'Please enter a solution.';
+                    puzzleFeedback.classList.add('text-red-400');
+                    return;
+                }
+
+                const numbersInSolution = solution.match(/\d+/g);
+                if (!numbersInSolution) {
+                    puzzleFeedback.textContent = "Your solution doesn't contain any numbers.";
+                    puzzleFeedback.classList.add('text-red-400');
+                    return;
+                }
+
+                const sortedPuzzleNumbers = [...currentPuzzle.numbers].map(String).sort();
+                const sortedSolutionNumbers = numbersInSolution.sort();
+
+                if (JSON.stringify(sortedPuzzleNumbers) !== JSON.stringify(sortedSolutionNumbers)) {
+                    puzzleFeedback.textContent = "Please use only the numbers provided.";
+                    puzzleFeedback.classList.add('text-red-400');
+                    return;
+                }
+
+                try {
+                    // Sanitize expression: only allow numbers, operators, and parentheses
+                    if (/[^0-9+\-*/().\s]/.test(solution)) {
+                       throw new Error("Invalid characters used.");
+                    }
+                    const result = new Function('return ' + solution)();
+                    if (Math.abs(result - 24) < 1e-9) {
+                        puzzleFeedback.textContent = "Correct! Well done.";
+                        puzzleFeedback.classList.add('text-green-400');
+                    } else {
+                        puzzleFeedback.textContent = `Result is ${result.toFixed(2)}, not 24. Try again!`;
+                        puzzleFeedback.classList.add('text-red-400');
+                    }
+                } catch (e) {
+                    puzzleFeedback.textContent = "Invalid mathematical expression.";
+                    puzzleFeedback.classList.add('text-red-400');
+                }
+            }
+
+            if (checkPuzzleBtn) {
+                checkPuzzleBtn.addEventListener('click', checkPuzzleSolution);
+                newPuzzleBtn.addEventListener('click', generateNewPuzzle);
+                puzzleInput.addEventListener('keyup', (event) => {
+                    if (event.key === 'Enter') {
+                        checkPuzzleSolution();
+                    }
+                });
+                generateNewPuzzle(); // Load first puzzle
+            }
+
+            // --- Puzzle Corner: Favorite Puzzles Logic ---
+            const solutionToggles = document.querySelectorAll('.toggle-solution-btn');
+            solutionToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const solutionDiv = button.nextElementSibling;
+                    if (solutionDiv && solutionDiv.classList.contains('solution')) {
+                        solutionDiv.classList.toggle('hidden');
+                        button.textContent = solutionDiv.classList.contains('hidden') ? 'Show Solution' : 'Hide Solution';
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
+
