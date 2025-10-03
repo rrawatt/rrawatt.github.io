@@ -240,7 +240,7 @@
                             
 $$
 \begin{aligned}
-& \text{Consider a stationary AR(1) process, defined by } X_t = \phi X_{t-1} + \varepsilon_t, \text{ with } |\phi|<1. |\
+& \text{Consider a stationary AR(1) process, defined by } X_t = \phi X_{t-1} + \varepsilon_t, \text{ with } |\phi|<1. \\
 & \text{Using the backshift operator } B \text{ (where } BX_t = X_{t-1}\text{), we can write:} \\
 & (1 - \phi B)X_t = \varepsilon_t \\
 & \text{Formally inverting the polynomial in } B \text{ gives the MA(}\infty\text{) representation:} \\
@@ -265,7 +265,7 @@ $$
 $$
 \begin{aligned}
 & \text{The standard Cauchy distribution is defined by the probability density function (PDF):} \\
-& f(x) = \frac{1}{\pi(1+x^2)} \quad \text{for } x \in \mathbb{R} \\
+& f(x) = \frac{1}{\pi(1+x^2)} \quad \text{for } x \in \mathbf{R} \\
 \\
 & \text{Let's attempt to calculate its mean (the first moment), } \mathbb{E}[X]: \\
 & \mathbb{E}[X] = \int_{-\infty}^{\infty} x f(x) dx = \int_{-\infty}^{\infty} \frac{x}{\pi(1+x^2)} dx \\
@@ -303,17 +303,17 @@ $$
 & A \to \text{END}: 45 \text{ mins} \qquad \qquad B \to \text{END}: T/100 \text{ mins} \\
 \\
 & \text{At equilibrium, traffic splits evenly: 2000 cars take the top route, 2000 take the bottom.} \\
-& \text{The travel time for any driver is } (2000/100) + 45 = \textbf{65 minutes}. \\
+& \text{The travel time for any driver is } (2000/100) + 45 = \text{\textbf{65 minutes}}. \\
 \\
-& \textbf{Now, we add a super-fast road from A to B with a travel time of 0.} \\
+& \text{\textbf{Now, we add a super-fast road from A to B with a travel time of 0.}} \\
 & \text{A rational driver will always prefer the new path: START} \to A \to B \to \text{END.} \\
 & \text{The new equilibrium: All 4000 drivers take this new route.} \\
 \\
 & \text{Let's calculate the new travel time:} \\
 & (\text{Time on START}\to A) + (\text{Time on } A \to B) + (\text{Time on } B \to \text{END}) \\
-& = (4000/100) + 0 + (4000/100) = 40 + 0 + 40 = \textbf{80 minutes}. \\
+& = (4000/100) + 0 + (4000/100) = 40 + 0 + 40 = \text{\textbf{80 minutes}}. \\
 \\
-& \textbf{The Paradox:} \text{By adding a new, perfect road, we made the commute for} \\
+& \text{\textbf{The Paradox:}} \text{ By adding a new, perfect road, we made the commute for} \\
 & \text{every single driver increase from 65 to 80 minutes.}
 \end{aligned}
 $$
@@ -325,7 +325,7 @@ $$
       <div id="latex-example">
 $$
 \begin{aligned}
-& \text{Benford's Law states that the probability } P \text{ of a number having a first digit } d \in \{1, ..., 9\} \\
+& \text{Benford's Law states that the probability } P \text{ of a number having a first digit } d \in \{1, \dots, 9\} \\
 & \text{is given by the logarithmic formula:} \\
 & \qquad P(d) = \log_{10}\left(1 + \frac{1}{d}\right) \\
 \\
@@ -333,16 +333,16 @@ $$
 & P(d=1) = \log_{10}(1 + 1/1) = \log_{10}(2) \approx 0.301 \quad (30.1\%) \\
 & P(d=9) = \log_{10}(1 + 1/9) = \log_{10}(10/9) \approx 0.046 \quad (4.6\%) \\
 \\
-& \textbf{Why does this happen? The core reason is scale invariance.} \\
+& \text{\textbf{Why does this happen? The core reason is scale invariance.}} \\
 & \text{The law applies to data whose logarithms are uniformly distributed.} \\
 & \text{The first digit is '1' when a number } x \text{ is between } 1 \cdot 10^k \text{ and } 2 \cdot 10^k. \\
 & \text{The length of this interval on a log scale is } \log_{10}(2) - \log_{10}(1) = 0.301. \\
 \\
-& \textbf{Applications:} \text{This pattern appears in financial data, city populations, physical} \\
+& \text{\textbf{Applications:}} \text{ This pattern appears in financial data, city populations, physical} \\
 & \text{constants, etc. Accountants use it to spot fabricated numbers in} \\
 & \text{tax returns, as human-invented numbers often fail to follow the law.}
 \end{aligned}
-$$
+$$$
       </div>
     </div>
         </section>
