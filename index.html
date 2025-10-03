@@ -259,9 +259,9 @@ $$
             </div>
 
 <div class="max-w-3xl mx-auto">
-            <h3 class="text-2xl font-bold mb-4 text-white">Duality of AR and MA Processes</h3>
-                <p class="text-gray-300 mb-6">This illustrates the fundamental duality between Autoregressive (AR) and Moving Average (MA) processes. Under certain conditions, a finite-order process can be represented as an infinite-order process of the other type, a concept central to time series modeling.</p>
-                             <div id="latex-example">
+                <h3 class="text-2xl font-bold mb-4 text-white">Undefined Moments of the Cauchy Distribution</h3>
+                <p class="text-gray-300 mb-6">The Cauchy distribution is a famous counterexample in probability and statistics. While its bell-shaped curve resembles the normal distribution, its 'heavy tails' lead to the surprising property that its mean, variance, and all higher moments are undefined.</p>
+                            <div id="latex-example">
 $$
 \begin{aligned}
 & \text{The standard Cauchy distribution is defined by the probability density function (PDF):} \\
@@ -271,10 +271,10 @@ $$
 & \mathbb{E}[X] = \int_{-\infty}^{\infty} x f(x) dx = \int_{-\infty}^{\infty} \frac{x}{\pi(1+x^2)} dx \\
 \\
 & \text{For this improper integral to be defined, it must converge absolutely. We test this:} \\
-& \int_{-\infty}^{\infty} \left| \frac{x}{\pi(1+x^2)} \right| dx = 2 \int_{0}^{\infty} \frac{x}{\pi(1+x^2)} dx \\
+& \int_{-\infty}^{\infty} \left\lvert \frac{x}{\pi(1+x^2)} \right\rvert dx = 2 \int_{0}^{\infty} \frac{x}{\pi(1+x^2)} dx \\
 \\
 & \text{Using the substitution } u = 1+x^2, \text{ so } du = 2x dx: \\
-& = \frac{1}{\pi} \int_{1}^{\infty} \frac{1}{u} du = \frac{1}{\pi} \left[ \ln|u| \right]_{1}^{\infty} \\
+& = \frac{1}{\pi} \int_{1}^{\infty} \frac{1}{u} du = \frac{1}{\pi} \left[ \ln\lvert u \rvert \right]_{1}^{\infty} \\
 \\
 & \text{As the upper limit goes to infinity, } \ln(u) \to \infty. \text{ The integral diverges.} \\
 & \text{Because the integral for the expected value does not converge absolutely, the mean is} \\
